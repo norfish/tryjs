@@ -23,20 +23,22 @@ function tryJS(opts) {
   var _fileLists = walk( _path );
 
   _fileLists.forEach(function(file) {
-    fs_readFile(file, 'utf-8')
-      .done(function(buf) {
-        var code = buf.toString();
-        var _parsed = parse(code);
-        
-        fs.writeFile(file, _parsed, function(err) {
-          if(err){
-            console.log('there is an error');
-          } else {
-            console.log('write successed');
-          }
-        });
-        console.log('tranformed####', _parsed.print_to_string({ beautify: true }), '#####');
-      });
+    fs.readFile(file, 'utf-8', function(err, buf){
+      console.log('1');
+      var code = buf.toString();
+      var _parsed = parse(code, file);
+
+      /*fs.writeFile(file, _parsed, function(err) {
+       if(err){
+       console.log('there is an error');
+       } else {
+       console.log('write successed');
+       }
+       });*/
+
+      console.log('tranformed####', _parsed, '#####');
+    });
+
   });
 
 }
