@@ -23,10 +23,11 @@ function tryJS(opts) {
   var _fileLists = walk( _path );
 
   _fileLists.forEach(function(file) {
-    fs_readFile(file)
-      .then(function(err, src) {
-        var _parsed = parse(src.toString());
-
+    fs_readFile(file, 'utf-8')
+      .done(function(buf) {
+        var code = buf.toString();
+        var _parsed = parse(code);
+        
         fs.writeFile(file, _parsed, function(err) {
           if(err){
             console.log('there is an error');
