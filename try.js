@@ -21,22 +21,22 @@ function tryJS(opts) {
   var _path  = opts.path || path.join(process.cwd());
 
   var _fileLists = walk( _path );
+  console.log('%s 个文件正在编译中...', _fileLists.length);
 
   _fileLists.forEach(function(file) {
     fs.readFile(file, 'utf-8', function(err, buf){
-      console.log('1');
       var code = buf.toString();
       var _parsed = parse(code, file);
 
-      fs.writeFile(file, _parsed, function(err) {
+      /*fs.writeFile(file, _parsed, function(err) {
         if(err){
           console.log('there is an error');
         } else {
           console.log('write successed');
         }
-      });
+      });*/
 
-      console.log('tranformed####', _parsed, '#####');
+      //console.log('tranformed####', _parsed, '#####');
     });
 
   });
