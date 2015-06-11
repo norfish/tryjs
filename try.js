@@ -28,13 +28,13 @@ function tryJS(opts) {
       var code = buf.toString();
       var _parsed = parse(code, file);
 
-      /*fs.writeFile(file, _parsed, function(err) {
+      fs.writeFile(file, _parsed, function(err) {
         if(err){
-          console.log('there is an error');
+          console.log('transform##', path.basename(file),'fail');
         } else {
-          console.log('write successed');
+          console.log('transform##', path.basename(file),'successed');
         }
-      });*/
+      });
 
       //console.log('tranformed####', _parsed, '#####');
     });
