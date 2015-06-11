@@ -1,0 +1,24 @@
+{
+  "name": "trirror",
+  "version": "0.0.0",
+  "description": "try error",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "error"
+  ],
+  "author": "norfish <easumlee@gmail.com> (http://jspie.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "graceful-fs": "^3.0.8",
+    "lodash": "^3.9.3",
+    "mkdirp": "^0.5.1",
+    "node-libs-browser": "^0.5.0",
+    "q": "^1.4.0",
+    "uglify-js2": "^2.1.11",
+    "webpack": "^1.9.4"
+  }
+}

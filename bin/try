@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+ 
+var program = require('commander');
+var tryJS = require('./../try');
+ 
+program
+  .version('0.0.1')
+  .option('-f, --file', '指定某个文件')
+  .option('-d, --direct', '指定文件夹')
+  .option('-i, --ignore', '忽略文件夹或文件')
+  .parse(process.argv);
+
+console.log('## start transform...');
+
+tryJS({});
+console.log('## transform end');
