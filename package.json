@@ -9,7 +9,7 @@
   "keywords": [
     "error"
   ],
-  "author": "norfish <easumlee@gmail.com> (http://jspie.com/)",
+  "author": "norfish <easumlee@gmail.com> (http://ziro.farbox.com/)",
   "license": "ISC",
   "dependencies": {
     "commander": "^2.8.1",
