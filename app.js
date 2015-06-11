@@ -22,7 +22,12 @@ var _file_path = './test/test.js';
 var trans = new UJS.TreeTransformer(null, function(node) {
 
   if(node instanceof UJS.AST_Lambda) {
-
+debugger
+    if(node.body[0] instanceof UJS.AST_Try){
+      console.log(node.name && node.name.name)
+      return node;
+      debugger
+    }
     if(node instanceof UJS.AST_Function) {
       //node.name = {name: _getUName()}
     }
@@ -43,7 +48,7 @@ fs.readFile(_file_path, function(err, src){
 
   var toplevel = UJS.parse(src);
   var t2 = toplevel.transform(trans);
-  var t2s = t2.print_to_string({ beautify: true });
+  var t2s = t2.print_to_string({ beautify: true, comments: true });
   fs.writeFile('./test/tese.ps.js', t2s, function(err) {
     if(err){
       console.log('there is an error');
@@ -51,7 +56,7 @@ fs.readFile(_file_path, function(err, src){
       console.log('write successed');
     }
   });
-  console.log('tranformed####', t2.print_to_string({ beautify: true }), '#####');
+  console.log('tranformed####', t2.print_to_string({ beautify: true,  comments: true }), '#####');
 });
 
 
@@ -66,7 +71,7 @@ function wrapTry(node) {
     end: node.end,
     bcatch: wrapCatch(node)
   });
-  console.log('try', tc.print_to_string({beautify: true}));
+  console.log('try', tc.print_to_string({beautify: true,  comments: true}));
  return tc;
 }
 

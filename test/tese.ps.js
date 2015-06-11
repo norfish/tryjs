@@ -4,7 +4,7 @@ function fn(a, b) {
         sum = a + b - 2;
         return sum;
     } catch (e) {
-        var line = 1;
+        var line = 7;
         var col = 0;
         var file = "./test/test.js";
         console.log("FUNCTION_ERROR@@", line, col, file);
@@ -12,7 +12,11 @@ function fn(a, b) {
     }
 }
 
-var fn2 = function(msg) {
+/**
+ *
+ * @param msg
+ */
+function fn2(msg) {
     try {
         alert("message" + msg);
     } catch (e) {
@@ -22,9 +26,9 @@ var fn2 = function(msg) {
         console.log("FUNCTION_ERROR@@", line, col, file);
         logError(line, col, file);
     }
-};
+}
 
-var fn3 = function(j, k, m) {
+var fn3 = function fn3(j, k, m) {
     try {
         if (!j) {
             return;
