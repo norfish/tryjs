@@ -1,6 +1,6 @@
 {
-  "name": "trirror",
-  "version": "0.0.0",
+  "name": "tryjs",
+  "version": "0.0.1",
   "description": "try error",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
   "author": "norfish <easumlee@gmail.com> (http://ziro.farbox.com/)",
   "license": "ISC",
   "dependencies": {
+    "MD5": "^1.2.2",
     "commander": "^2.8.1",
     "graceful-fs": "^3.0.8",
     "lodash": "^3.9.3",
