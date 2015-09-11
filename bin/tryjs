@@ -6,7 +6,7 @@
  
 var program = require('commander');
 //var tryJS = require('./../try');
-var tryJS = require('./../tryme').runCmd;
+var tryJS = require('./../src/try.js').runCmd;
  
 cmd
   .version('0.0.1')
