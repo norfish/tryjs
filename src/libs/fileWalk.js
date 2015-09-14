@@ -10,7 +10,7 @@ var path = require('path');
 var _ = require('lodash');
 var taskConfig = require('./taskConfig.js');
 
-var CONFIG = taskConfig.getConfig();
+var fileLists = [];
 
 /**
  * 遍历所有需要编译的的文件
@@ -20,7 +20,6 @@ var CONFIG = taskConfig.getConfig();
 function walk(dir, callback) {
 
     var fileLists = getFileList(dir);
-
     fileLists.forEach( function(filePath, i){
 
         fs.readFile(filePath, 'utf-8', function(err, buf){
@@ -37,9 +36,16 @@ function walk(dir, callback) {
  * @returns {Array}
  */
 function getFileList(dir) {
-    var fileLists = [];
+    var CONFIG = taskConfig.getConfig();
+
+    //如果指定了文件，就不需要遍历了
+    if(CONFIG.compileFile) {
+        fileLists.push(CONFIG.compileFile);
+        return fileLists;
+    }
+
     if(!dir) {
-        dir = (CONFIG.dir);
+        dir = CONFIG.directory;
     }
 
     var dirs = fs.readdirSync(dir);
@@ -57,26 +63,28 @@ function getFileList(dir) {
 }
 
 function shouldIncludeDir(file) {
+    var CONFIG = taskConfig.getConfig();
     var base = path.basename(file);
     console.log('shouldIncludeFile', base);
     return CONFIG.ignoreFolders.indexOf(base) < 0;
 }
 
 function shouldIncludeFile(file) {
-    console.log('shouldIncludeFile', file, !isIgnoreFile(file) && isIncludeExt(file));
+    console.log('shouldIncludeFile', file, !isIgnoreFile(file), !isIgnoreFile(file) && isIncludeExt(file));
     return !isIgnoreFile(file) && isIncludeExt(file);
 }
 
 function isIncludeExt(file) {
+    var CONFIG = taskConfig.getConfig();
     var ext = path.extname(file);
     return ext && CONFIG.include.indexOf( ext ) > -1;
 }
 
 function isIgnoreFile(src) {
+    var CONFIG = taskConfig.getConfig();
     src = path.basename(src);
     return CONFIG.ignoreFiles.indexOf(src) > -1;
 }
-
 
 module.exports = walk;
 

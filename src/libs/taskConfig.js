@@ -10,19 +10,21 @@ var _ = require('lodash');
 var path = require('path');
 
 var cwd = process.cwd();
-var configPath = path.join(cwd, 'test/tryjs.config');
+
+var configPath = path.join(cwd, 'tryjs.config');
 
 var defaults = {
     include: '.js',
     ignoreFiles: '',
     ignoreFolders: '',
-    dir: path.join(cwd, 'test')
+    compileFile: '',
+    directory: path.join(cwd)
 };
 
 var parsed = null;
 
-exports.setConfigPath = function(dir) {
-    configPath = path.join(cwd, dir);
+exports.setConfigPath = function(file) {
+    configPath = path.join(cwd, file);
 };
 
 /**
@@ -33,8 +35,8 @@ exports.getConfig = function(){
     if(!parsed) {
         var configJSON = Utils.IO.readJSON(configPath);
         parsed = _.extend(defaults, configJSON);
-        console.log('parse',parsed)
     }
+    console.log('parse',parsed)
     return parsed;
 };
 
@@ -45,11 +47,11 @@ exports.getConfig = function(){
  */
 exports.setConfig = function(key, val) {
     exports.getConfig();
-    var obj;
+    var obj = {};
     if(typeof key === 'object'){
         obj = key;
     } else {
-        obj = {key: val};
+        obj[key] = val;
     }
     parsed = _.extend(parsed, obj);
 };

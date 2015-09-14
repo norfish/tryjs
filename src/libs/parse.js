@@ -13,6 +13,11 @@ var Utils = require('./utils.js');
 var md5 = require('MD5');
 var getErrHandler = require('./getErrHandler.js');
 
+var co = 'function fn(err){throw new Error("gggg" + err.name)}';
+falafel(co, function(node) {
+    //debugger;
+});
+
 function parse(src, filePath) {
     var output = falafel(src, function (node) {
 

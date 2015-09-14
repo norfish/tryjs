@@ -1,6 +1,6 @@
 {
   "name": "tryjs",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "try error",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "norfish <easumlee@gmail.com> (http://ziro.farbox.com/)",
   "license": "ISC",
   "dependencies": {
-    "MD5": "^1.2.2",
+    "md5": "^2.0",
     "acorn": "^2.1.0",
     "astral": "^0.1.0",
     "cjson": "^0.3.1",
@@ -24,5 +24,8 @@
     "node-libs-browser": "^0.5.0",
     "q": "^1.4.0",
     "webpack": "^1.9.4"
+  },
+  "bin": {
+     "tryjs": "./bin/tryme"
   }
 }

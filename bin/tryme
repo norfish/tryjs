@@ -4,24 +4,17 @@
  * Module dependencies.
  */
 
-var cmd = require('commander');
-//var tryJS = require('./../try');
-var tryJS = require('./../src/try.js');
+var program = require('commander');
+var cli = require('./../cli.js');
 
-cmd
-    .version('0.0.1')
-    .option('-f, --file', '指定某个文件')
-    .option('-d, --direct', '指定文件夹')
-    .option('-i, --ignore', '忽略文件夹或文件')
-    .option('-b, --debug', '启动 debug 模式' )
-    .arguments('<cmd> [env]')
-    .action(function (cmd, env) {
-        cmdValue = cmd;
-        envValue = env;
-    })
+program
+    .version('0.1.0')
+    .option('-c --configFile [file]', '指定 config 文件')
+    .option('-f, --file [file]', '指定某个文件')
+    .option('-d, --directory [directory]', '指定文件夹')
+    .option('-i, --ignore [ignores]', '忽略文件夹或文件')
     .parse(process.argv);
 
-
 console.log('## start transform...');
-tryJS(cmd);
+cli.run(program);
 console.log('## transform end');

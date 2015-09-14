@@ -33,6 +33,50 @@ var Utils = {
             };
         },
 
+        Throw: function(param) {
+            return {
+                type: 'ThrowStatement',
+                argument: param
+            };
+        },
+
+        New: function(callee, param) {
+            return {
+                type: 'NewExpression',
+                callee: callee,
+                arguments: param
+            }
+        },
+
+        Error: function() {
+            return this.Identifier('Error');
+        },
+
+        Literal: function(val) {
+            return {
+                type: 'Literal',
+                value: val
+            }
+        },
+
+        PlusExpression: function(left, right) {
+            return {
+                type: 'BinaryExpression',
+                operator: '+',
+                left: left,
+                right: right
+            };
+        },
+
+        MemberExpression: function(obj, prop){
+            return {
+                type: 'MemberExpression',
+                object: obj,
+                property: prop,
+                computed: false
+            };
+        },
+
         isFunction: function(item) {
             return item.type === 'FunctionDeclaration' || item.type === 'FunctionExpression';
         },
@@ -66,11 +110,12 @@ var Utils = {
     },
 
     IO: {
-        readJSON: function(path, callback){
+        readJSON: function(file){
             try{
-                return cjson.load(path);
+                return Utils.path.isFile(file) ? cjson.load(file) : {};
             } catch(e) {
-                throw new Error('请确认' + path + '是正确的 JSON 文件');
+                var msg = '请确认'+ file +'是正确的 JSON 文件';
+                throw new Error(msg);
             }
         }
     },
@@ -85,11 +130,11 @@ var Utils = {
         },
 
         isFile: function(file) {
-            return fs.statSync(file).isFile()
+            return fs.statSync(file).isFile();
         },
 
         isDirectory: function(file) {
-            return fs.statSync(file).isDirectory()
+            return fs.statSync(file).isDirectory();
         }
 
     }
