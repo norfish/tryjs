@@ -18,16 +18,11 @@
     "cjson": "^0.3.1",
     "commander": "^2.8.1",
     "escodegen": "^1.6.1",
-    "esprima": "^2.4.1",
     "falafel": "^1.2.0",
-    "file": "^0.2.2",
-    "graceful-fs": "^3.0.8",
     "lodash": "^3.9.3",
     "mkdirp": "^0.5.1",
     "node-libs-browser": "^0.5.0",
     "q": "^1.4.0",
-    "rocambole": "^0.6.0",
-    "uglify-js2": "^2.1.11",
     "webpack": "^1.9.4"
   }
 }
