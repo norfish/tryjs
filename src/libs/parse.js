@@ -9,16 +9,13 @@ var escodegen = require('escodegen');
 var acorn = require('acorn');
 var falafel = require('falafel');
 var _ = require('lodash');
+var path = require('path');
 var Utils = require('./utils.js');
 var md5 = require('MD5');
 var getErrHandler = require('./getErrHandler.js');
 
-var co = 'function fn(err){throw new Error("gggg" + err.name)}';
-falafel(co, function(node) {
-    //debugger;
-});
-
 function parse(src, filePath) {
+    console.log('##transforming', path.basename(filePath));
     var output = falafel(src, function (node) {
 
         if (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') {

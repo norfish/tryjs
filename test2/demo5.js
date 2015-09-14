@@ -24,3 +24,15 @@ function fn2() {
         throw new Error('FUNC_ERROR@@fn2' + e.name);
     }
 }
+
+function fn3() {
+    try {
+        alert(3);
+    } catch (e)
+                {
+            var file = 'demo5.js';
+            var filename = typeof module === 'undefined' ? file : module && module.filename;
+            console.log('FUNCTION_ERROR@@', e, filename, fn3);
+            throw e;
+        }
+}

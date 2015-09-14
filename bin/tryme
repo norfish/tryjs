@@ -17,4 +17,3 @@ program
 
 console.log('## start transform...');
 cli.run(program);
-console.log('## transform end');

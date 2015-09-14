@@ -23,12 +23,11 @@ function genErrHandler(node, file) {
 
     file = path.basename(file);
     var funcName = node.id && node.id.name;
-
     var src = '{' +
         'var file = "' + file + '";' +
         'var filename = (typeof module === "undefined" ? file : module && module.filename);' +
         'console.log("FUNCTION_ERROR@@", e, filename, '+ funcName +');' +
-        getThrowFn(funcName, 'e')+
+        getThrowFn('e')+
     '}';
 
     return {
@@ -38,12 +37,8 @@ function genErrHandler(node, file) {
     };
 }
 
-function getThrowFn(func, e) {
-    func = AST.Literal('FUNC_ERROR@@' + func);
-    var type = AST.MemberExpression(AST.Identifier('e'), AST.Identifier('name'));
-    var newExp = AST.New(AST.Error(), [AST.PlusExpression(func, type)]);
-    var ast = AST.Throw(newExp);
-
+function getThrowFn(e) {
+    var ast = AST.Throw( AST.Identifier('e') );
     return escodegen.generate(ast);
 }
 

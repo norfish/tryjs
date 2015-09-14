@@ -36,7 +36,6 @@ exports.getConfig = function(){
         var configJSON = Utils.IO.readJSON(configPath);
         parsed = _.extend(defaults, configJSON);
     }
-    console.log('parse',parsed)
     return parsed;
 };
 

@@ -58,19 +58,16 @@ function getFileList(dir) {
             shouldIncludeDir( _path ) && getFileList( _path );
         }
     });
-    console.log(fileLists);
     return fileLists;
 }
 
 function shouldIncludeDir(file) {
     var CONFIG = taskConfig.getConfig();
     var base = path.basename(file);
-    console.log('shouldIncludeFile', base);
     return CONFIG.ignoreFolders.indexOf(base) < 0;
 }
 
 function shouldIncludeFile(file) {
-    console.log('shouldIncludeFile', file, !isIgnoreFile(file), !isIgnoreFile(file) && isIncludeExt(file));
     return !isIgnoreFile(file) && isIncludeExt(file);
 }
 
