@@ -25,21 +25,24 @@ exports.setConfigPath = function(dir) {
     configPath = path.join(cwd, dir);
 };
 
+/**
+ * read config file and get config object
+ * @returns {*}
+ */
 exports.getConfig = function(){
-
     if(!parsed) {
-        Utils.IO.readJSON(configPath, function(err, options) {
-
-            if(options.dir) {
-                options.dir = path.join(cwd, options.dir);
-            }
-            parsed = _.extend(defaults, options);
-            console.log('parse',parsed)
-        });
+        var configJSON = Utils.IO.readJSON(configPath);
+        parsed = _.extend(defaults, configJSON);
+        console.log('parse',parsed)
     }
     return parsed;
 };
 
+/**
+ * set config file's path
+ * @param {string|object} key
+ * @param {[string]} val
+ */
 exports.setConfig = function(key, val) {
     exports.getConfig();
     var obj;

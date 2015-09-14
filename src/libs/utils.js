@@ -6,6 +6,7 @@
  */
 
 var fs = require('fs');
+var cjson = require('cjson');
 
 var Utils = {
 
@@ -66,15 +67,11 @@ var Utils = {
 
     IO: {
         readJSON: function(path, callback){
-            if(!path || !Utils.path.isFile(path)) {
-                return callback.call(this, null, {});
+            try{
+                return cjson.load(path);
+            } catch(e) {
+                throw new Error('请确认' + path + '是正确的 JSON 文件');
             }
-
-            fs.readFile(path, function(err, data) {
-                debugger
-                data = JSON.parse(data.toString());
-                callback.call(this, err, data);
-            });
         }
     },
 
