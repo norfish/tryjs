@@ -4,6 +4,7 @@
  * Email yongxiang.li@qunar.com
  * Date: 15/9/11 16:39
  */
+
 var QNR = {};
 QNR.Utils = {};
 QNR.Utils.log = function func_trir_e0560f2993849c90e0300f6b6067558e(mes) {

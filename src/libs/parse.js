@@ -30,20 +30,22 @@ function parse(src, filePath) {
 
 function wrapTry(node, filePath) {
     var splited = Utils.AST.splitNestFn(node);
+    var normal = splited.normal;
+    var nest = splited.nest;
 
-    //是否已经编译过，防止重复编译
-    if(isWrapped(splited.normal)){
+    //是否已经编译过，防止重复编译,有可能是空函数
+    if(!normal.length || isWrapped(normal)){
         return node;
     }
 
     var wraped = {
         type: "TryStatement",
-        block: Utils.AST.Block( splited.normal ),
+        block: Utils.AST.Block( normal ),
         handler: getErrHandler(node, filePath),
         finalizer: null
     };
 
-    var newBody = [].concat(splited.nest);
+    var newBody = [].concat(nest);
     newBody.push(wraped);
 
     node.body.body = newBody;
@@ -51,7 +53,7 @@ function wrapTry(node, filePath) {
 }
 
 function isWrapped(node) {
-    return node[0].type === 'TryStatement';
+    return node.length ? node[0].type === 'TryStatement' : true;
 }
 
 /**

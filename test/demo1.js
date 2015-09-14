@@ -14,3 +14,15 @@ function fn1() {
         console.log('FUNCTION_ERROR@@', e, filename);
     }
 }
+
+function fn2() {
+    try {
+    } catch (e) {
+        var file = 'demo1.js';
+        var filename = typeof module === 'undefined' ? file : module && module.filename;
+        console.log('FUNCTION_ERROR@@', e, filename);
+    }
+}
+
+function fn3() {
+}
