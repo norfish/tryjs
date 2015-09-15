@@ -1,5 +1,5 @@
 /**
- * Description:
+ * Description: read and set config
  * Created by yongxiang.li
  * Email yongxiang.li@qunar.com
  * Date: 15/8/25 20:39

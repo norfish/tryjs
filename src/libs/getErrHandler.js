@@ -1,5 +1,5 @@
 /**
- * Description:
+ * Description: error handler function
  * Created by yongxiang.li
  * Email yongxiang.li@qunar.com
  * Date: 15/8/25 19:42

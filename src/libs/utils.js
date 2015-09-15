@@ -1,5 +1,5 @@
 /**
- * Description:
+ * Description: Utils function
  * Created by yongxiang.li
  * Email yongxiang.li@qunar.com
  * Date: 15/8/25 19:11
@@ -7,6 +7,7 @@
 
 var fs = require('fs');
 var cjson = require('cjson');
+var path = require('path');
 
 var Utils = {
 
@@ -122,19 +123,35 @@ var Utils = {
 
     path: {
         getFileName: function(module, filename) {
-            return module.filename || this.getCurPath(filename);
+            return module.filename || this.getBasename(filename);
         },
 
-        getCurPath: function() {
-            return process.cwd();
+        getBasename: function(p) {
+            return path.basename(p);
         },
 
         isFile: function(file) {
-            return fs.statSync(file).isFile();
+            try{
+                return fs.statSync(file).isFile();
+            } catch(err) {
+                if(err.code === 'ENOENT') {
+                    return false;
+                } else {
+                    throw err;
+                }
+            }
         },
 
         isDirectory: function(file) {
-            return fs.statSync(file).isDirectory();
+            try{
+                return fs.statSync(file).isDirectory();
+            } catch(err) {
+                if(err.code === 'ENOENT') {
+                    return false;
+                } else {
+                    throw err;
+                }
+            }
         }
 
     }

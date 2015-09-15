@@ -1,5 +1,5 @@
 /**
- * Description:
+ * Description: 命令行入口
  * Created by yongxiang.li
  * Email yongxiang.li@qunar.com
  * Date: 15/9/14 14:49

@@ -1,5 +1,5 @@
 /**
- * Description:获取目录下的所有文件
+ * Description: get all files that matches in config directory
  * Created by yongxiang.li
  * Email yongxiang.li@qunar.com
  * Date: 15/8/25 20:25
@@ -26,7 +26,6 @@ function walk(dir, callback) {
             var code = buf.toString();
             callback.call(null, err, code, filePath);
         });
-
     });
 }
 
@@ -58,6 +57,7 @@ function getFileList(dir) {
             shouldIncludeDir( _path ) && getFileList( _path );
         }
     });
+
     return fileLists;
 }
 

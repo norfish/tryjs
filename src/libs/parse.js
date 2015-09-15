@@ -1,5 +1,5 @@
 /**
- * Description:
+ * Description: parse code with try-catch
  * Created by yongxiang.li
  * Email yongxiang.li@qunar.com
  * Date: 15/9/11 11:01
@@ -23,7 +23,7 @@ function parse(src, filePath) {
                 node.id = Utils.AST.Identifier( _getUName(node) );
             }
             node = wrapTry(node, filePath);
-            node.update( escodegen.generate(node) );
+            node.update( escodegen.generate(node, {comment: true}) );
         }
     });
 
