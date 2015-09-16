@@ -16,14 +16,13 @@ var Tryjs = function(){
 
         var _parsed = parse(source, filePath);
 
-        fs.writeFile(filePath, _parsed, function(err) {
-            if(err){
-                console.log('##Transform', path.basename(filePath), ' fail');
-            } else {
-                console.log('##Transform', path.basename(filePath), ' successe');
-            }
-        });
-
+        try{
+            fs.writeFileSync(filePath, _parsed);
+            console.log('##Transform', path.basename(filePath), ' successe');
+        } catch(e) {
+            throw e;
+            console.log('##Transform', path.basename(filePath), ' fail');
+        }
     });
 };
 

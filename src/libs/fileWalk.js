@@ -9,6 +9,7 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 var taskConfig = require('./taskConfig.js');
+var Utils = require('./utils.js');
 
 var fileLists = [];
 
@@ -20,12 +21,9 @@ var fileLists = [];
 function walk(dir, callback) {
 
     var fileLists = getFileList(dir);
-    fileLists.forEach( function(filePath, i){
-
-        fs.readFile(filePath, 'utf-8', function(err, buf){
-            var code = buf.toString();
-            callback.call(null, err, code, filePath);
-        });
+    fileLists.forEach( function(filePath){
+        var code = fs.readFileSync(filePath, 'utf-8');
+        callback.call(null, null, code.toString(), filePath);
     });
 }
 
@@ -51,9 +49,9 @@ function getFileList(dir) {
 
     dirs.forEach(function(item) {
         var _path = path.join(dir, item);
-        if(fs.statSync(_path).isFile() ){
+        if( Utils.path.isFile(_path) ){
             shouldIncludeFile( _path ) && fileLists.push( _path )
-        } else if(fs.statSync(_path).isDirectory() ){
+        } else if( Utils.path.isDirectory(_path)  ){
             shouldIncludeDir( _path ) && getFileList( _path );
         }
     });

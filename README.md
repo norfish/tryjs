@@ -33,3 +33,6 @@ Usage: tryjs [options]
 - *0.1.0* rework
   change: change acore to parse AST
   change: use esgencode to gennereate code
+
+- *0.1.2*
+  change: 读写操作改为同步
