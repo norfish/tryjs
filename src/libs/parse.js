@@ -11,7 +11,7 @@ var falafel = require('falafel');
 var _ = require('lodash');
 var path = require('path');
 var Utils = require('./utils.js');
-var md5 = require('MD5');
+var md5 = require('md5');
 var getErrHandler = require('./getErrHandler.js');
 
 function parse(src, filePath) {
