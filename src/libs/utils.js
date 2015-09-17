@@ -8,6 +8,7 @@
 var fs = require('fs');
 var cjson = require('cjson');
 var path = require('path');
+var mkdirp = require('mkdirp');
 
 var Utils = {
 
@@ -118,6 +119,14 @@ var Utils = {
                 var msg = '请确认'+ file +'是正确的 JSON 文件';
                 throw new Error(msg);
             }
+        },
+
+        write: function(filepath, content) {
+            var dir = path.dirname(filepath);
+            if(! Utils.path.isDirectory(dir) ){
+                mkdirp.sync(dir);
+            }
+            fs.writeFileSync(filepath, content);
         }
     },
 

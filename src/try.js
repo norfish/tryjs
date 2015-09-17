@@ -7,6 +7,8 @@ var parse = require('./libs/parse');
 var path = require('path');
 var fs = require('fs');
 
+var IO = require('./libs/utils.js').IO;
+
 var Tryjs = function(){
     fileWalk(null, function(err, source, filePath) {
         if(err){
@@ -17,7 +19,7 @@ var Tryjs = function(){
         var _parsed = parse(source, filePath);
 
         try{
-            fs.writeFileSync(filePath, _parsed);
+            IO.write(filePath, _parsed);
             console.log('##Transform', path.basename(filePath), ' successe');
         } catch(e) {
             throw e;

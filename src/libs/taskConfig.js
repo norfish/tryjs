@@ -18,7 +18,8 @@ var defaults = {
     ignoreFiles: '',
     ignoreFolders: '',
     compileFile: '',
-    directory: path.join(cwd)
+    directory: path.join(cwd),
+    output: ''
 };
 
 var parsed = null;

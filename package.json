@@ -12,7 +12,6 @@
   "author": "norfish <easumlee@gmail.com> (http://ziro.farbox.com/)",
   "license": "ISC",
   "dependencies": {
-    "md5": "^2.0",
     "acorn": "^2.1.0",
     "astral": "^0.1.0",
     "cjson": "^0.3.1",
@@ -20,12 +19,14 @@
     "escodegen": "^1.6.1",
     "falafel": "^1.2.0",
     "lodash": "^3.9.3",
+    "md5": "^2.0",
     "mkdirp": "^0.5.1",
     "node-libs-browser": "^0.5.0",
     "q": "^1.4.0",
+    "vinyl-fs": "^1.0.0",
     "webpack": "^1.9.4"
   },
   "bin": {
-     "tryjs": "./bin/tryme"
+    "tryjs": "./bin/tryme"
   }
 }
