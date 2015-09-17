@@ -1,13 +1,13 @@
 {
   "name": "tryjs",
   "version": "0.1.1",
-  "description": "try error",
+  "description": "transform you code and auto wrap function body with try-catch",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "error"
+    "error try-catch ast transform"
   ],
   "author": "norfish <easumlee@gmail.com> (http://ziro.farbox.com/)",
   "license": "ISC",
@@ -23,8 +23,7 @@
     "mkdirp": "^0.5.1",
     "node-libs-browser": "^0.5.0",
     "q": "^1.4.0",
-    "webpack": "^1.9.4",
-      "express": "*"
+    "webpack": "^1.9.4"
   },
   "bin": {
      "tryjs": "./bin/tryme"
