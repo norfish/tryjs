@@ -31,7 +31,7 @@ function genErrHandler(node, file) {
     var src = '{' +
         'var filename = (typeof module === "undefined" ? ' + file + ' : module && module.filename);' +
         'var handlerFn = ' + errHandler + ';' +
-        '(typeof handlerFn === "function") ? handlerFn(e, filename,'+ funcName +') : "";' +
+        '(typeof handlerFn === "function") ? handlerFn(e, filename, "'+ funcName +'") : "";' +
         getThrowFn('e')+
     '}';
 
