@@ -10,6 +10,9 @@ var path = require('path');
 var Utils = require('./utils.js');
 var AST = Utils.AST;
 var escodegen = require('escodegen');
+var taskConfig = require('./taskConfig.js');
+
+var errHandler = taskConfig.getConfig().errHandler;
 
 /**
  * 生成错误处理函数
@@ -23,10 +26,11 @@ function genErrHandler(node, file) {
 
     file = path.basename(file);
     var funcName = node.id && node.id.name;
+
     var src = '{' +
-        'var file = "' + file + '";' +
-        'var filename = (typeof module === "undefined" ? file : module && module.filename);' +
-        'console.log("FUNCTION_ERROR@@", e, filename, '+ funcName +');' +
+        'var filename = (typeof module === "undefined" ? ' + file + ' : module && module.filename);' +
+        'var handlerFn = "' + errHandler + '";' +
+        '(typeof handlerFn === "function") ? handlerFn(e, filename,'+ funcName +') : "";' +
         getThrowFn('e')+
     '}';
 

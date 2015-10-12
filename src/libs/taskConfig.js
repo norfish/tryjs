@@ -19,13 +19,17 @@ var defaults = {
     ignoreFolders: '',
     compileFile: '',
     directory: path.join(cwd),
-    output: ''
+    output: '',
+    errHandler: 'ErrorHandler' //错误处理函数名
 };
 
-var parsed = null;
+var parsed = null; //处理后的 config
 
+//更改 config 文件路径，路径更改同时重新解析 config 文件
 exports.setConfigPath = function(file) {
     configPath = path.join(cwd, file);
+    var configJSON = Utils.IO.readJSON(configPath);
+    parsed = _.extend(defaults, configJSON);
 };
 
 /**
@@ -43,7 +47,7 @@ exports.getConfig = function(){
 /**
  * set config file's path
  * @param {string|object} key
- * @param {[string]} val
+ * @param {string} val
  */
 exports.setConfig = function(key, val) {
     exports.getConfig();
