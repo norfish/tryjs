@@ -14,12 +14,12 @@ var cwd = process.cwd();
 var configPath = path.join(cwd, 'tryjs.config');
 
 var defaults = {
-    include: '.js',
-    ignoreFiles: '',
-    ignoreFolders: '',
-    compileFile: '',
-    directory: path.join(cwd),
-    output: '',
+    include: '.js', //包含的文件类型
+    ignoreFiles: '', //忽略的文件
+    ignoreFolders: '', //忽略的文件夹
+    compileFile: '', //指定编译的文件
+    directory: path.join(cwd), //指定编译的文件夹
+    output: '', 、、
     errHandler: 'ErrorHandler' //错误处理函数名
 };
 

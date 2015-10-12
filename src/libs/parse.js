@@ -31,9 +31,10 @@ function parse(src, filePath) {
 }
 
 function wrapTry(node, filePath) {
+    //分离函数包含的子函数
     var splited = Utils.AST.splitNestFn(node);
     var normal = splited.normal;
-    var nest = splited.nest;
+    var nest = splited.nest; //子函数
 
     //是否已经编译过，防止重复编译,有可能是空函数
     if(!normal.length || isWrapped(normal)){
