@@ -26,10 +26,11 @@ function genErrHandler(node, file) {
 
     file = path.basename(file);
     var funcName = node.id && node.id.name;
+    errHandler = escodegen.generate(AST.Identifier(errHandler));
 
     var src = '{' +
         'var filename = (typeof module === "undefined" ? ' + file + ' : module && module.filename);' +
-        'var handlerFn = "' + errHandler + '";' +
+        'var handlerFn = ' + errHandler + ';' +
         '(typeof handlerFn === "function") ? handlerFn(e, filename,'+ funcName +') : "";' +
         getThrowFn('e')+
     '}';

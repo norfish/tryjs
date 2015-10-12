@@ -19,7 +19,7 @@ var defaults = {
     ignoreFolders: '', //忽略的文件夹
     compileFile: '', //指定编译的文件
     directory: path.join(cwd), //指定编译的文件夹
-    output: '', 、、
+    output: '', //TODO 自定义输出的文件夹
     errHandler: 'ErrorHandler' //错误处理函数名
 };
 

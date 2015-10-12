@@ -8,12 +8,12 @@ var program = require('commander');
 var cli = require('./../cli.js');
 
 program
-    .version('0.1.1')
+    .version('0.1.2')
     .option('-c, --configFile [file]', '指定 config 文件')
     .option('-f, --file [file]', '指定某个文件')
     .option('-d, --directory [directory]', '指定文件夹')
     .option('-i, --ignore [ignores]', '忽略文件夹或文件')
-    .option('-o, --output [directory]', '指定文件输出的文件夹路径')
+    //.option('-o, --output [directory]', '指定文件输出的文件夹路径')
     .parse(process.argv);
 
 console.log('## start transform...');
