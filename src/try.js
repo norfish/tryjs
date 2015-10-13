@@ -1,11 +1,11 @@
 /**
+ *
  * create by yongxiang.li
  */
 
 var fileWalk = require('./libs/fileWalk');
 var parse = require('./libs/parse');
 var path = require('path');
-var fs = require('fs');
 
 var IO = require('./libs/utils.js').IO;
 
@@ -20,7 +20,7 @@ var Tryjs = function(){
 
         try{
             IO.write(filePath, _parsed);
-            console.log('##Transform', path.basename(filePath), ' successe');
+            console.log('##Transform', path.basename(filePath), ' success');
         } catch(e) {
             throw e;
             console.log('##Transform', path.basename(filePath), ' fail');
