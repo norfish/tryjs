@@ -26,7 +26,7 @@ function genErrHandler(node, file) {
 
     file = path.basename(file);
     var funcName = node.id && node.id.name;
-    errHandler = escodegen.generate(AST.Identifier(errHandler));
+    errHandler = escodegen.generate( AST.Identifier(errHandler) );
 
     var src = '{' +
         'var filename = (typeof module === "undefined" ? ' + file + ' : module && module.filename);' +
@@ -42,6 +42,7 @@ function genErrHandler(node, file) {
     };
 }
 
+//throw error
 function getThrowFn(e) {
     var ast = AST.Throw( AST.Identifier('e') );
     return escodegen.generate(ast);
