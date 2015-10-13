@@ -8,7 +8,6 @@
 var escodegen = require('escodegen');
 var acorn = require('acorn');
 var falafel = require('falafel');
-var _ = require('lodash');
 var path = require('path');
 var Utils = require('./utils.js');
 var md5 = require('md5');

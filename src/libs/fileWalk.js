@@ -7,11 +7,11 @@
 
 var fs = require('fs');
 var path = require('path');
-var _ = require('lodash');
 var taskConfig = require('./taskConfig.js');
 var Utils = require('./utils.js');
 
-var fileLists = [];
+var fileLists = [],
+    CONFIG;
 
 /**
  * 遍历所有需要编译的的文件
@@ -33,7 +33,7 @@ function walk(dir, callback) {
  * @returns {Array}
  */
 function getFileList(dir) {
-    var CONFIG = taskConfig.getConfig();
+    CONFIG = taskConfig.getConfig();
 
     //如果指定了文件，就不需要遍历了
     if(CONFIG.compileFile) {
@@ -60,7 +60,6 @@ function getFileList(dir) {
 }
 
 function shouldIncludeDir(file) {
-    var CONFIG = taskConfig.getConfig();
     var base = path.basename(file);
     return CONFIG.ignoreFolders.indexOf(base) < 0;
 }
@@ -69,14 +68,14 @@ function shouldIncludeFile(file) {
     return !isIgnoreFile(file) && isIncludeExt(file);
 }
 
+//是否属于配置的文件类型
 function isIncludeExt(file) {
-    var CONFIG = taskConfig.getConfig();
     var ext = path.extname(file);
     return ext && CONFIG.include.indexOf( ext ) > -1;
 }
 
+//忽略的文件
 function isIgnoreFile(src) {
-    var CONFIG = taskConfig.getConfig();
     src = path.basename(src);
     return CONFIG.ignoreFiles.indexOf(src) > -1;
 }

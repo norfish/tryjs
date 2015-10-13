@@ -25,6 +25,18 @@ Usage: tryjs [options]
     -i, --ignore [ignores]       忽略文件夹或文件
 ```
 
+### 通过 config 文件配置，默认为项目根目录下的 tryjs.config 文件，格式为JSON
+```
+{
+    include: '.js .jsx', //包含的文件类型
+    ignoreFiles: [], //忽略的文件
+    ignoreFolders: [], //忽略的文件夹
+    compileFile: '', //指定编译的文件
+    directory: ["src"], //指定编译的文件夹
+    errHandler: 'ErrorHandler' //错误处理函数名
+}
+```
+
 ### UPDATE LOG
 - *0.0.1* use uglifyjs2
 
